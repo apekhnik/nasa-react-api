@@ -6,7 +6,7 @@ const NasaData = () => {
         getData()
     },[])
     const getData = async()=>{
-        const response = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=DEMO_KEY')
+        const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2017-07-12')
                                     .then(response=>response.json())
         console.log(response)
     }
