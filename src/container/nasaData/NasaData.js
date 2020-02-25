@@ -1,7 +1,12 @@
 import React,{useState, useEffect} from 'react'
-import MinImage from '../../component/MinImage/MinImage'
+import Image from '../../component/Image/Image'
+import Title from '../../component/Title/Title'
+import Badge from '../../component/Badge/Badge'
+import Text from '../../component/Text/Text'
+import './apod.css'
 import {API_KEY} from '../../constants.js'
-const APOD = ({date='2017-05-12'}) => {
+import classnames from 'classnames'
+const APOD = ({date='2015-05-12', size}) => {
     const [apod, setApod] = useState({})
     
     useEffect(()=>{
@@ -21,14 +26,21 @@ const APOD = ({date='2017-05-12'}) => {
         })
         
     }
-console.log(apod)
+    const sizeRender = size === 'min'? 'apod-min':'apod-full'
+    const classname = classnames( sizeRender)
+console.log(size)
     return(
         <div>
-            <p>{apod.title}</p>
-            <MinImage
+            <div className={classname}>
+            <Title title={apod.title}/>
+            <Image
                 src={apod.url}
             />
+            <Badge date={apod.date}/>
+            <Text text={apod.explanation}/>
         </div>
+        </div>
+       
     )
 }
 export default APOD

@@ -1,25 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import APOD from './container/nasaData/NasaData';
 
-class App extends Component {
-  render() {
+const App =()=> {
+  const [mounth, setMounth] = useState([1,2,3,4,5,6,7,8,9])
+  const test=()=>{
+    
+  }
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <APOD
-          date='2018-05-14'
+        
+        {/* <APOD
+          date='2011-01-14'
+          size='min'
+        /> */}
+        {mounth.map((item)=>{
+      console.log(item)
+      return <APOD
+          date={`2011-01-${item}`}
+          size='min'
         />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      
+    })}
+        {/* <APOD
+          date='2015-05-10'
+          size='full'
+        /> */}
+       
       </div>
     );
-  }
+  
 }
 
 export default App;

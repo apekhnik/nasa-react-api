@@ -3,7 +3,7 @@ import './MinImage.css'
 
 const MinImage = ({src}) =>{
     return(
-        <div className='min-image'>
+        <div>
             <img src={src} alt=""/>
         </div>
     )

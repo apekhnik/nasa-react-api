@@ -1,0 +1,81 @@
+.apod-min {
+    width: 200px;
+    padding: 0;
+    position: relative;
+    
+    box-sizing: border-box;
+    margin-left: 200px;
+    
+}
+.apod-min:hover h5 {
+    opacity: 1;
+}
+.apod-min:hover p {
+    opacity: 1;
+}
+.apod-min h5{
+    position: absolute;
+    color: white;
+    top: 0;
+    opacity: 0;
+    left: 10%;
+    transition: all .3s;
+}
+.apod-min p{
+    position: absolute;
+    bottom:0;
+    left:10px;
+    color: white;
+    font-size: 14px;
+    opacity:0;
+    transition: all .4s;
+}
+.apod-min span{
+    display: none;
+}
+.apod-min img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 5px;
+    /* position: absolute;
+    left: 0; */
+}
+.apod-full {
+    width: 450px;
+    min-height: 350px;
+    background-color: #353b48;
+    margin: 0;
+    border-radius: 5px;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+
+.apod-full:hover span{
+    display: block;
+}
+.apod-full span{
+    color: white;
+    display: none;
+    transition: all 10s linear;
+}
+.apod-full img {
+    width: 100%;
+    height: auto;
+    
+}
+.apod-full p{
+    position: absolute;
+    top:0;
+    left:10px;
+    color: white;
+    font-size: 14px;
+    opacity:0;
+    
+    transition: all .4s;
+}
+.apod-full:hover p{
+    opacity: 1;
+}
