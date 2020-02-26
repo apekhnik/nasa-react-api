@@ -30,7 +30,7 @@ const APOD = ({date='2015-05-12', size}) => {
     const classname = classnames( sizeRender)
 console.log(size)
     return(
-        <div>
+        
             <div className={classname}>
             <Title title={apod.title}/>
             <Image
@@ -38,8 +38,8 @@ console.log(size)
             />
             <Badge date={apod.date}/>
             <Text text={apod.explanation}/>
-        </div>
-        </div>
+            </div>
+        
        
     )
 }
