@@ -1,7 +1,8 @@
 import React from 'react'
+
 const ContainerItem =({children})=>{
     return(
-        <div>
+        <div className='container-item'>
             {children}
         </div>
     )

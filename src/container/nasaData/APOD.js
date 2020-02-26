@@ -6,11 +6,13 @@ import Text from '../../component/Text/Text'
 import './apod.css'
 import {API_KEY} from '../../constants.js'
 import classnames from 'classnames'
-const APOD = ({date='2015-05-12', size}) => {
+import Button from '../../component/Button/Button'
+const APOD = ({date, size, onClick}) => {
     const [apod, setApod] = useState({})
-    
+    const [showExplanation, setShowExplanation] = useState(false)
     useEffect(()=>{
         getData(date)
+        
     },[])
     const getData = async(date)=>{
         const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`)
@@ -27,17 +29,22 @@ const APOD = ({date='2015-05-12', size}) => {
         
     }
     const sizeRender = size === 'min'? 'apod-min':'apod-full'
+
     const classname = classnames( sizeRender)
-console.log(size)
+
     return(
         
-            <div className={classname}>
+            <div className={classname} onClick={onClick}>
             <Title title={apod.title}/>
             <Image
                 src={apod.url}
             />
             <Badge date={apod.date}/>
-            <Text text={apod.explanation}/>
+            {showExplanation?
+            <Text text={apod.explanation}/>:null
+            }
+            <Button onClick={()=>setShowExplanation(!showExplanation)}/>
+            
             </div>
         
        

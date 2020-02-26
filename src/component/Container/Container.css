@@ -1,8 +1,10 @@
 .container {
     display: flex;
     width: 100%;
+    justify-content: space-around;
 
 }
 .container-item {
-    min-width: 25%;
+    min-width: 15%;
+    padding-top: 25px;
 }

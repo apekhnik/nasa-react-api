@@ -30,6 +30,9 @@
     opacity:0;
     transition: all .4s;
 }
+.apod-min button {
+    display: none;
+}
 .apod-min span{
     display: none;
 }
@@ -42,7 +45,7 @@
     left: 0; */
 }
 .apod-full {
-    width: 450px;
+    width: 650px;
     min-height: 350px;
     background-color: #353b48;
     margin: 0;
@@ -52,14 +55,33 @@
     box-sizing: border-box;
     
 }
-
-.apod-full:hover span{
-    display: block;
+.apod-full h5 {
+    color: white;
 }
+
+
 .apod-full span{
     color: white;
-    display: none;
+    
     transition: all 10s linear;
+    font-size: 14px;
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    right: 10px;
+    animation: 0.4s opacity linear;
+    z-index: 10;
+}
+.apod-full span:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    opacity: .3;
 }
 .apod-full img {
     width: 100%;
@@ -78,4 +100,27 @@
 }
 .apod-full:hover p{
     opacity: 1;
+}
+.apod-full button {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+@keyframes opacity{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
