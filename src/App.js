@@ -3,6 +3,7 @@ import './App.css';
 import APOD from './container/nasaData/APOD';
 import Container from './component/Container/Container'
 import ContainerItem from './component/Container/ContainerItem'
+import Loader from './component/Loader/Loader';
 const App =()=> {
   const [day, setMounth] = useState([10,12,13])
   const [day1, setMounth1] = useState([2,3,5])
@@ -38,7 +39,7 @@ const loadFull=()=>{
 
 
   if(load){
-    return <p>[eqyz</p>
+    return <Loader/>
   }
     return (
       <div className="App">
