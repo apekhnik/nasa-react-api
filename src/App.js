@@ -11,7 +11,10 @@ const App =()=> {
   const [load, setLoad] = useState(false)
   const [date, setDate] = useState('')
   
-  
+  const prevItems =(fullDate)=>{
+    const currentDay = fullDate.slice(8)
+  }
+  const nextItems =(fullDate)=>{}
   
   const reloadFullApod=(item)=>{
     setLoad(true)
