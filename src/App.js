@@ -8,7 +8,7 @@ const App =()=> {
   const [day1, setMounth1] = useState([2,3,5])
   const [fullDate, setFullDate] = useState('2017-10-10')
   const [load, setLoad] = useState(false)
-  
+  const [date, setDate] = useState('')
   
   
   
@@ -22,7 +22,18 @@ const App =()=> {
     },1000)
     console.log(fullDate,'stal');
   }
+const loadFull=()=>{
+ console.log(typeof date)
+    setLoad(true)
 
+    setTimeout(()=>{
+      setFullDate(date);
+      setLoad(false);
+    },1000)
+  
+  
+    
+}
 
 
 
@@ -44,10 +55,13 @@ const App =()=> {
     })}
           </ContainerItem>
           <ContainerItem>
+          <input type="date" onChange={(e)=>{setDate(e.target.value);console.log(typeof date)}} value={date}/>
+            <button onClick={loadFull}/>
             <APOD
               size="full"
               date={fullDate}
             />
+            
           </ContainerItem>
           <ContainerItem>
           {day1.map((item)=>{
