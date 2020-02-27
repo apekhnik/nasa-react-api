@@ -5,15 +5,27 @@ import Container from './component/Container/Container'
 import ContainerItem from './component/Container/ContainerItem'
 const App =()=> {
   const [day, setMounth] = useState([10,12,13])
+  const [day1, setMounth1] = useState([2,3,5])
   const [fullDate, setFullDate] = useState('2017-10-10')
   const [load, setLoad] = useState(false)
-  const test=(item)=>{
+  
+  
+  
+  
+  const reloadFullApod=(item)=>{
     setLoad(true)
-    
-    
-    setTimeout(()=>{setLoad(false);setFullDate(`2012-01-${item}`);console.log(fullDate)},1000)
-    console.log(item)
+    setFullDate(`0`);
+    console.log(fullDate,'bil')
+    setTimeout(()=>{
+      setFullDate(`2011-01-${item}`);
+      setLoad(false);
+    },1000)
+    console.log(fullDate,'stal');
   }
+
+
+
+
   if(load){
     return <p>[eqyz</p>
   }
@@ -26,7 +38,7 @@ const App =()=> {
       return <APOD
           date={`2011-01-${item}`}
           size='min'
-          onClick={()=>{test(item)}}
+          onClick={()=>{reloadFullApod(item)}}
         />
       
     })}
@@ -38,11 +50,12 @@ const App =()=> {
             />
           </ContainerItem>
           <ContainerItem>
-          {day.map((item)=>{
+          {day1.map((item)=>{
+           
             return <APOD
-                date={`2012-01-${item}`}
+                date={`2011-01-${item}`}
                 size='min'
-                onClick={()=>{setFullDate(`2012-01-${item}`);console.log(`2012-01-${item}`)}}
+                onClick={()=>{reloadFullApod(item)}}
                   />
           })}
           </ContainerItem>
