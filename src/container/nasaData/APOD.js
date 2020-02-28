@@ -8,6 +8,7 @@ import {API_KEY} from '../../constants.js'
 import classnames from 'classnames'
 import Button from '../../component/Button/Button'
 const APOD = ({date, size, onClick}) => {
+    console.log(date)
     const [apod, setApod] = useState({})
     const [showExplanation, setShowExplanation] = useState(false)
     useEffect(()=>{
