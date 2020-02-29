@@ -5,53 +5,50 @@ import Container from './component/Container/Container'
 import ContainerItem from './component/Container/ContainerItem'
 import Loader from './component/Loader/Loader';
 const App =()=> {
-  const [prevDays, setPrevDays] = useState([])
-  const [nextDays, setNextDays] = useState([])
   
-  
+  // const [nextDays, setNextDays] = useState([])
   // const [date, setDate] = useState('2015-05-07')
-  
-
-
-
-  const [mainDate, setMainDate] = useState('2015-05-08')
+  const [currentDay, setCurrentDay] = useState('2015-05-08')
   const [load, setLoad] = useState(false)
 
-
-        const prevItems =()=>{
-          console.log(mainDate.slice(8))
-          const items = []
-          for(let i=1;i<4;i++){
-            items.push(Number(mainDate.slice(8))-i)
-            console.log((Number(mainDate.slice(8))-i))
-            
-          }
-          console.log(items)
-          setPrevDays(items)
-          
-          
+  const daysRange = [];
+        const onDayChange =day=>{ 
+              setLoad(true)
+              console.log(day)
+                for(let i=1;i<4;i++){
+                  daysRange.push(Number(day.slice(8))-i)
+                  console.log((Number(day.slice(8))-i))
+                  
+                }
+                console.log(daysRange)
+                setLoad(false)
         }
-  const nextItems =(fullDate)=>{
-    const items = []
+        
+        // const reload = ()=>{
+        //   setLoad(true)
+        //   setTimeout(()=>{
+        //     console.log(mainDate)
+        //     prevItems(mainDate)
+        //     // nextItems(mainDate)
+        //     console.log(prevDays)
+        //     // console.log(nextDays)
+        //     setLoad(false)}
+        //   ,2000)
+          
+          
+        // }
+ 
+  //       const nextItems =(fullDate)=>{
+  //   const items = []
     
-    for(let i = 1; i < 4; i++){
-      items.push(Number(fullDate.slice(8))+i)
-    }
-    setNextDays(items)
-  }
-  const reload = ()=>{
-    setLoad(true)
-    setTimeout(()=>{
-      console.log(mainDate)
-      prevItems(mainDate)
-      // nextItems(mainDate)
-      console.log(prevDays)
-      // console.log(nextDays)
-      setLoad(false)}
-    ,2000)
-    
-    
-  }
+  //   for(let i = 1; i < 4; i++){
+  //     items.push(Number(fullDate.slice(8))+i)
+  //   }
+  //   setNextDays(items)
+  // }
+  
+  
+
  
   
   useEffect(()=>{
@@ -97,26 +94,26 @@ const App =()=> {
         
        <Container>
           <ContainerItem>
-          {/* {prevDays.map((item)=>{
+          {daysRange.map((item)=>{
             console.log(item)
       return <APOD
           date={item.toString()}
           size='min'
-          onClick={()=>{reloadFullApod(item)}}
+          // onClick={()=>{reloadFullApod(item)}}
         />
       
-    })} */}
+    })}
       
           </ContainerItem>
           <ContainerItem>
                 <button>prev</button>
-                <input type="date" onChange={(e)=>{setMainDate(e.target.value)}} value={mainDate}/>
-                <button onClick={reload}/>
+                <input type="date" onChange={(e)=>{setCurrentDay(e.target.value)}} value={currentDay}/>
+                <button onClick={()=>onDayChange(currentDay)}/>
                 
                 <button>next</button>
                 <APOD
                   size="full"
-                  date={mainDate}
+                  date={currentDay}
                 />
           </ContainerItem>
           <ContainerItem>
