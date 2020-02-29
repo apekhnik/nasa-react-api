@@ -5,39 +5,86 @@ import Container from './component/Container/Container'
 import ContainerItem from './component/Container/ContainerItem'
 import Loader from './component/Loader/Loader';
 const App =()=> {
-  const [day, setMounth] = useState([10,12,13])
-  const [day1, setMounth1] = useState([2,3,5])
-  const [fullDate, setFullDate] = useState('2017-10-10')
+  
+  // const [nextDays, setNextDays] = useState([])
+  // const [date, setDate] = useState('2015-05-07')
+  const [currentDay, setCurrentDay] = useState('2015-05-08')
   const [load, setLoad] = useState(false)
-  const [date, setDate] = useState('')
-  
-  const prevItems =(fullDate)=>{
-    const currentDay = fullDate.slice(8)
-  }
-  const nextItems =(fullDate)=>{}
-  
-  const reloadFullApod=(item)=>{
-    setLoad(true)
-    setFullDate(`0`);
-    console.log(fullDate,'bil')
-    setTimeout(()=>{
-      setFullDate(`2011-01-${item}`);
-      setLoad(false);
-    },1000)
-    console.log(fullDate,'stal');
-  }
-const loadFull=()=>{
- console.log(typeof date)
-    setLoad(true)
 
-    setTimeout(()=>{
-      setFullDate(date);
-      setLoad(false);
-    },1000)
-  
-  
+  const daysRange = [];
+        const onDayChange =day=>{ 
+              setLoad(true)
+              console.log(day.slice(0,8))
+                for(let i=1;i<4;i++){
+                  daysRange.push(`${day.slice(0,8)}${(Number(day.slice(8))-i)}`)
+                  console.log(`${day.slice(0,8)}${(Number(day.slice(8))-i)}`)
+                  
+                }
+                console.log(daysRange)
+                setLoad(false)
+        }
+        const prevDays = (daysRange) =>{
+
+        }
+        // const reload = ()=>{
+        //   setLoad(true)
+        //   setTimeout(()=>{
+        //     console.log(mainDate)
+        //     prevItems(mainDate)
+        //     // nextItems(mainDate)
+        //     console.log(prevDays)
+        //     // console.log(nextDays)
+        //     setLoad(false)}
+        //   ,2000)
+          
+          
+        // }
+ 
+  //       const nextItems =(fullDate)=>{
+  //   const items = []
     
-}
+  //   for(let i = 1; i < 4; i++){
+  //     items.push(Number(fullDate.slice(8))+i)
+  //   }
+  //   setNextDays(items)
+  // }
+  
+  
+
+ 
+  
+  useEffect(()=>{
+      // prevItems(mainDate)
+      // nextItems(mainDate)
+  },[])
+  // const reloadFullApod=()=>{
+  //   setLoad(true)
+    
+  //   prevItems(date)
+  //   nextItems(date)
+  //   setTimeout(()=>{
+  //     setFullDate();
+  //     setLoad(false);
+  //   },1000)
+    
+  // }
+
+
+  
+
+// const loadFull=(date)=>{
+//  console.log(date, 'clicking')
+//     setLoad(true)
+
+//     setTimeout(()=>{
+//       setDate(date)
+//       setFullDate(date);
+//       prevItems(date)
+//       nextItems(date)
+//       reloadFullApod()
+//       setLoad(false);
+//     },1000)
+// }
 
 
 
@@ -49,33 +96,39 @@ const loadFull=()=>{
         
        <Container>
           <ContainerItem>
-          {day.map((item)=>{
+          {daysRange.map((item)=>{
+            console.log(item)
       return <APOD
-          date={`2011-01-${item}`}
+          date={item.toString()}
           size='min'
-          onClick={()=>{reloadFullApod(item)}}
+          // onClick={()=>{reloadFullApod(item)}}
         />
       
     })}
+      
           </ContainerItem>
           <ContainerItem>
-          <input type="date" onChange={(e)=>{setDate(e.target.value);console.log(typeof date)}} value={date}/>
-            <button onClick={loadFull}/>
-            <APOD
-              size="full"
-              date={fullDate}
-            />
-            
+                <button>prev</button>
+                <input type="date" onChange={(e)=>{setCurrentDay(e.target.value)}} value={currentDay}/>
+                <button onClick={()=>onDayChange(currentDay)}/>
+                
+                <button>next</button>
+                <APOD
+                  size="full"
+                  date={currentDay}
+                />
           </ContainerItem>
           <ContainerItem>
-          {day1.map((item)=>{
-           
-            return <APOD
-                date={`2011-01-${item}`}
-                size='min'
-                onClick={()=>{reloadFullApod(item)}}
-                  />
-          })}
+          {/* {nextDays.map((item)=>{
+            console.log(item,'right side')
+      return <APOD
+          date={item.toString()}
+          size='min'
+          // onClick={()=>{loadFull(item)}}
+          onClick={()=>{loadFull(item.toString())}}
+        />
+      
+          })} */}
           </ContainerItem>
        </Container>
       </div>
