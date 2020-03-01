@@ -43,7 +43,7 @@ const APOD = ({date, size, onClick}) => {
             {showExplanation?
             <Text text={apod.explanation}/>:null
             }
-            <Button onClick={()=>setShowExplanation(!showExplanation)}/>
+            <Button onClick={()=>setShowExplanation(!showExplanation)} text={'INFO'}/>
             
             </div>
         
