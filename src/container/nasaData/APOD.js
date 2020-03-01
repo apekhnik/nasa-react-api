@@ -7,8 +7,9 @@ import './apod.css'
 import {API_KEY} from '../../constants.js'
 import classnames from 'classnames'
 import Button from '../../component/Button/Button'
+import Loader from '../../component/Loader/Loader'
 const APOD = ({date, size, onClick}) => {
-    // console.log(date)
+    const [load, setLoad] = useState(false)
     const [apod, setApod] = useState({})
     const [showExplanation, setShowExplanation] = useState(false)
     useEffect(()=>{
@@ -16,6 +17,7 @@ const APOD = ({date, size, onClick}) => {
         
     },[])
     const getData = async(date)=>{
+        setLoad(true)
         try {
             const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`)
             .then(response=>response.json())
@@ -31,12 +33,15 @@ const APOD = ({date, size, onClick}) => {
         } catch (error) {
             console.log(error)
         }
+        setLoad(false)
         
     }
     const sizeRender = size === 'min'? 'apod-min':'apod-full'
 
     const classname = classnames( sizeRender)
-
+    if(load){
+        return <Loader/>
+    }
     return(
         
             <div className={classname} onClick={onClick}>

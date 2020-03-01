@@ -49,7 +49,7 @@ const App =()=> {
   }
 
  
-  
+
   useEffect(()=>{
 
   },[])
@@ -103,15 +103,14 @@ const App =()=> {
                 />
           </ContainerItem>
           <ContainerItem>
-          {stateRange.next.map((item)=>{
-
-      return <APOD
-          date={item.toString()}
-          size='min'
-          onClick={()=>{onDayChange(item.toString())}}
-        />
-      
-          })}
+          {
+              stateRange.next.map((item)=>{
+                      return <APOD
+                      date={item.toString()}
+                      size='min'
+                      onClick={()=>{onDayChange(item.toString())}}
+                      />})
+          }
           </ContainerItem>
        </Container>
       </div>
