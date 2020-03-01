@@ -15,12 +15,7 @@ const App =()=> {
         const onDayChange =day=>{ 
               setLoad(true)
               console.log(day)
-                for(let i=1;i<4;i++){
-                  daysRange.push(Number(day.slice(8))-i)
-                  console.log((Number(day.slice(8))-i))
-                  
-                }
-                console.log(daysRange)
+               
                 setLoad(false)
         }
         
