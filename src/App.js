@@ -20,43 +20,47 @@ const App =()=> {
 
         const prevItems =()=>{
           console.log(mainDate.slice(8))
-          const items = []
-          for(let i=1;i<4;i++){
-            items.push(Number(mainDate.slice(8))-i)
-            console.log((Number(mainDate.slice(8))-i))
+          const items =  []
+          // for(let i=1;i<4;i++){
+          //    items.push(Number(mainDate.slice(8))-i)
+          //   console.log((Number(mainDate.slice(8))-i))
             
-          }
+          // }
           console.log(items)
-          setPrevDays(items)
+          setPrevDays(['f','f','f'])
+          console.log(prevDays)
           
           
         }
-  const nextItems =(fullDate)=>{
-    const items = []
+  // const nextItems =(fullDate)=>{
+  //   const items = []
     
-    for(let i = 1; i < 4; i++){
-      items.push(Number(fullDate.slice(8))+i)
-    }
-    setNextDays(items)
-  }
+  //   for(let i = 1; i < 4; i++){
+  //     items.push(Number(fullDate.slice(8))+i)
+  //   }
+  //   setNextDays(items)
+  // }
   const reload = ()=>{
     setLoad(true)
-    setTimeout(()=>{
-      console.log(mainDate)
-      prevItems(mainDate)
-      // nextItems(mainDate)
-      console.log(prevDays)
-      // console.log(nextDays)
-      setLoad(false)}
-    ,2000)
-    
-    
+    // setPrevDays('fsdfd')
+    console.log(mainDate)
+    // setTimeout(()=>{
+    //   // console.log(mainDate)
+    //   // prevItems(mainDate)
+    //   // // nextItems(mainDate)
+      
+    //   // // console.log(nextDays)
+    //   setLoad(false)}
+    // ,2000)
+    prevItems()
+    console.log(prevDays)
   }
  
   
   useEffect(()=>{
       // prevItems(mainDate)
       // nextItems(mainDate)
+      
   },[])
   // const reloadFullApod=()=>{
   //   setLoad(true)
