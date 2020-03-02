@@ -50,9 +50,7 @@ const App =()=> {
 
  
 
-  useEffect(()=>{
-
-  },[])
+ 
 
 
 
