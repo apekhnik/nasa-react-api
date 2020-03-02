@@ -8,7 +8,7 @@ import Button from './component/Button/Button'
 import ControlForm from './component/Form/Form';
 const App =()=> {
 
-  const [currentDay, setCurrentDay] = useState('2015-05-08')
+  const [currentDay, setCurrentDay] = useState('2015-05-3')
   const [load, setLoad] = useState(false)
   const [stateRange, setRange] = useState({
                                       prev:['2015-05-05','2015-05-06','2015-05-07'],
@@ -51,31 +51,11 @@ const App =()=> {
   const onDayChange =day=>{ 
           const daysRangePrev = [];
           const daysRangeNext = [];
-          console.log(countOfdaysInMounth(day),'days count')
+          
               setLoad(true)
                       for(let i=1;i<4;i++){
-                        let incomingDay = (Number(day.slice(8))-i)===0?countOfdaysInMounth(day):Number(day.slice(8))-i
-                        console.log(Number(day.slice(8))-i)
-                        // switch (Number(day.slice(8))) {
-                        //   case 4:
-                        //      help = countOfdaysInMounth(day)
-                        //     break;
-                        //   case 3:
-                        //      help = countOfdaysInMounth(day)-1
-                        //     break;
-                        //   case 2:
-                        //      help = countOfdaysInMounth(day)-2
-                        //     break;
-                        //   case 3:
-                        //      help = countOfdaysInMounth(day)-3
-                        //     break;
-                        //   default:
-                        //     break;
-                        // }
-                        
-                        let dayZ = (Number(day.slice(8))===4)?countOfdaysInMounth(day):(Number(day.slice(8))-i)
-                        daysRangePrev.push(`${day.slice(0,8)}${incomingDay}`)
-                        console.log(incomingDay)
+                        daysRangePrev.push(`${day.slice(0,8)}${(Number(day.slice(8))-i)}`)
+      
                       }
                       for(let i=1;i<4;i++){
                         daysRangeNext.push(`${day.slice(0,8)}${(Number(day.slice(8))+i)}`)
