@@ -6,81 +6,6 @@ import ContainerItem from './component/Container/ContainerItem'
 import Loader from './component/Loader/Loader';
 import Button from './component/Button/Button'
 const App =()=> {
-<<<<<<< HEAD
-  
-  // const [nextDays, setNextDays] = useState([])
-  // const [date, setDate] = useState('2015-05-07')
-  const [currentDay, setCurrentDay] = useState('2015-05-08')
-  const [load, setLoad] = useState(false)
-
-  const daysRange = [];
-        const onDayChange =day=>{ 
-              setLoad(true)
-              console.log(day)
-               
-                setLoad(false)
-        }
-        
-        // const reload = ()=>{
-        //   setLoad(true)
-        //   setTimeout(()=>{
-        //     console.log(mainDate)
-        //     prevItems(mainDate)
-        //     // nextItems(mainDate)
-        //     console.log(prevDays)
-        //     // console.log(nextDays)
-        //     setLoad(false)}
-        //   ,2000)
-          
-          
-        // }
- 
-  //       const nextItems =(fullDate)=>{
-  //   const items = []
-    
-  //   for(let i = 1; i < 4; i++){
-  //     items.push(Number(fullDate.slice(8))+i)
-  //   }
-  //   setNextDays(items)
-  // }
-  
-  
-
- 
-  
-  useEffect(()=>{
-      // prevItems(mainDate)
-      // nextItems(mainDate)
-  },[])
-  // const reloadFullApod=()=>{
-  //   setLoad(true)
-    
-  //   prevItems(date)
-  //   nextItems(date)
-  //   setTimeout(()=>{
-  //     setFullDate();
-  //     setLoad(false);
-  //   },1000)
-    
-  // }
-
-
-  
-
-// const loadFull=(date)=>{
-//  console.log(date, 'clicking')
-//     setLoad(true)
-
-//     setTimeout(()=>{
-//       setDate(date)
-//       setFullDate(date);
-//       prevItems(date)
-//       nextItems(date)
-//       reloadFullApod()
-//       setLoad(false);
-//     },1000)
-// }
-=======
   const [currentDay, setCurrentDay] = useState('2015-05-08')
   const [load, setLoad] = useState(false)
   const [stateRange, setRange] = useState({prev:[],next:[]})
@@ -123,7 +48,6 @@ const App =()=> {
 
   
 
->>>>>>> origin
 
 
 
@@ -135,28 +59,11 @@ const App =()=> {
         
        <Container>
           <ContainerItem>
-<<<<<<< HEAD
-          {daysRange.map((item)=>{
-=======
           {stateRange.prev.map((item)=>{
->>>>>>> origin
             console.log(item)
       return <APOD
           date={item.toString()}
           size='min'
-<<<<<<< HEAD
-          // onClick={()=>{reloadFullApod(item)}}
-        />
-      
-    })}
-      
-          </ContainerItem>
-          <ContainerItem>
-                <button>prev</button>
-                <input type="date" onChange={(e)=>{setCurrentDay(e.target.value)}} value={currentDay}/>
-                <button onClick={()=>onDayChange(currentDay)}/>
-                
-=======
           onClick={()=>{onDayChange(item.toString())}}
         />
       
@@ -171,7 +78,6 @@ const App =()=> {
                   text='GO!'
                   onClick={()=>{onDayChange(currentDay)}}
                 />
->>>>>>> origin
                 <button>next</button>
                 <APOD
                   size="full"
@@ -179,28 +85,16 @@ const App =()=> {
                 />
           </ContainerItem>
           <ContainerItem>
-<<<<<<< HEAD
-          {/* {nextDays.map((item)=>{
-            console.log(item,'right side')
-=======
           {stateRange.next.map((item)=>{
 
->>>>>>> origin
       return <APOD
           date={item.toString()}
           size='min'
           // onClick={()=>{loadFull(item)}}
-<<<<<<< HEAD
-          onClick={()=>{loadFull(item.toString())}}
-        />
-      
-          })} */}
-=======
           onClick={()=>{onDayChange(item.toString())}}
         />
       
           })}
->>>>>>> origin
           </ContainerItem>
        </Container>
       </div>
