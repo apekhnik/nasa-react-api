@@ -8,7 +8,7 @@ import Button from './component/Button/Button'
 import ControlForm from './component/Form/Form';
 const App =()=> {
 
-  const [currentDay, setCurrentDay] = useState('2015-05-3')
+  const [currentDay, setCurrentDay] = useState('2015-05-5')
   const [load, setLoad] = useState(false)
   const [stateRange, setRange] = useState({
                                       prev:['2015-05-05','2015-05-06','2015-05-07'],
@@ -48,6 +48,7 @@ const App =()=> {
         break;
     }
   }
+  
   const onDayChange =day=>{ 
           const daysRangePrev = [];
           const daysRangeNext = [];
@@ -73,11 +74,31 @@ const App =()=> {
   }
   const swipeNext = day =>{
     const nextDay = `${day.slice(0,8)}${Number(day.slice(8))+1}`
-    onDayChange(nextDay)
+    const days = Number(day.slice(8)),
+          mounth = Number(day.slice(6,7)),
+          year = Number(day.slice(0,4))
+    console.log(days,mounth,year)
+    if(Number(day.slice(8))+1===countOfdaysInMounth(day)){
+      console.log(`${day.slice(0,5)}0${(mounth+1)}-${1}`)
+      onDayChange(`${day.slice(0,5)}0${(day.slice(6,7)+1)}-${1}`)
+    }else{
+      onDayChange(nextDay)
+    }
+    
   }
   const swipePrev = day =>{
     const preDays = `${day.slice(0,8)}${Number(day.slice(8))-1}`
-    onDayChange(preDays)
+    const days = Number(day.slice(8)),
+          mounth = Number(day.slice(6,7)),
+          year = Number(day.slice(0,4))
+    console.log(days,mounth,year)
+    if(Number(day.slice(8))-1===1){
+      console.log(`${day.slice(0,5)}0${(mounth-1)}-${countOfdaysInMounth(day)}`)
+      onDayChange(`${day.slice(0,5)}0${(day.slice(6,7)-1)}-${countOfdaysInMounth(day)}`)
+    }else{
+      onDayChange(preDays)
+    }
+    
   }
 
  
