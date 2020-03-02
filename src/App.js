@@ -6,9 +6,13 @@ import ContainerItem from './component/Container/ContainerItem'
 import Loader from './component/Loader/Loader';
 import Button from './component/Button/Button'
 const App =()=> {
+
   const [currentDay, setCurrentDay] = useState('2015-05-08')
   const [load, setLoad] = useState(false)
-  const [stateRange, setRange] = useState({prev:[],next:[]})
+  const [stateRange, setRange] = useState({
+                                      prev:['2015-05-05','2015-05-06','2015-05-07'],
+                                      next:['2015-05-09','2015-05-10','2015-05-11']
+                                  })
   
   
   
@@ -16,8 +20,6 @@ const App =()=> {
   const onDayChange =day=>{ 
           const daysRangePrev = [];
           const daysRangeNext = [];
-
-
               setLoad(true)
                       for(let i=1;i<4;i++){
                         daysRangePrev.push(`${day.slice(0,8)}${(Number(day.slice(8))-i)}`)
@@ -31,29 +33,29 @@ const App =()=> {
                 prev:daysRangePrev, 
                 next:daysRangeNext
               })
-
-              
               setTimeout(()=>{
                   console.log(stateRange)
                   setLoad(false)
                 },1500)
              
   }
-
-  
+  const swipeNext = day =>{
+    const nextDay = `${day.slice(0,8)}${Number(day.slice(8))+1}`
+    onDayChange(nextDay)
+  }
+  const swipePrev = day =>{
+    const preDays = `${day.slice(0,8)}${Number(day.slice(8))-1}`
+    onDayChange(preDays)
+  }
 
  
-<<<<<<< HEAD
-  
-  useEffect(()=>{
 
-  },[])
-=======
->>>>>>> 79f0e715aab3145b1978b87f356b804492e5e0a5
+ 
 
 
 
   
+
 
 
 
@@ -78,30 +80,35 @@ const App =()=> {
      
           </ContainerItem>
           <ContainerItem>
-                <button>prev</button>
+                <Button
+                  text='PREV'
+                  onClick={()=>{swipePrev(currentDay)}}
+                />
                 <input type="date" onChange={(e)=>{setCurrentDay(e.target.value);}} value={currentDay}/>
                 
                 <Button
                   text='GO!'
                   onClick={()=>{onDayChange(currentDay)}}
                 />
-                <button>next</button>
+              
+                <Button
+                  text='NEXT'
+                  onClick={()=>{swipeNext(currentDay)}}
+                />
                 <APOD
                   size="full"
                   date={currentDay}
                 />
           </ContainerItem>
           <ContainerItem>
-          {stateRange.next.map((item)=>{
-
-      return <APOD
-          date={item.toString()}
-          size='min'
-          // onClick={()=>{loadFull(item)}}
-          onClick={()=>{onDayChange(item.toString())}}
-        />
-      
-          })}
+          {
+              stateRange.next.map((item)=>{
+                      return <APOD
+                      date={item.toString()}
+                      size='min'
+                      onClick={()=>{onDayChange(item.toString())}}
+                      />})
+          }
           </ContainerItem>
        </Container>
       </div>
