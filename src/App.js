@@ -6,9 +6,16 @@ import ContainerItem from './component/Container/ContainerItem'
 import Loader from './component/Loader/Loader';
 import Button from './component/Button/Button'
 const App =()=> {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 90ad0749475b791f1d39f19973f9db439de094a7
   const [currentDay, setCurrentDay] = useState('2015-05-08')
   const [load, setLoad] = useState(false)
-  const [stateRange, setRange] = useState({prev:[],next:[]})
+  const [stateRange, setRange] = useState({
+                                      prev:['2015-05-05','2015-05-06','2015-05-07'],
+                                      next:['2015-05-09','2015-05-10','2015-05-11']
+                                  })
   
   
   
@@ -35,11 +42,17 @@ const App =()=> {
                 },1500)
              
   }
-
-  
+  const swipeNext = day =>{
+    const nextDay = `${day.slice(0,8)}${Number(day.slice(8))+1}`
+    onDayChange(nextDay)
+  }
+  const swipePrev = day =>{
+    const preDays = `${day.slice(0,8)}${Number(day.slice(8))-1}`
+    onDayChange(preDays)
+  }
 
  
-  
+
   useEffect(()=>{
 
   },[])
@@ -48,6 +61,10 @@ const App =()=> {
 
   
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 90ad0749475b791f1d39f19973f9db439de094a7
 
 
 
@@ -71,20 +88,32 @@ const App =()=> {
      
           </ContainerItem>
           <ContainerItem>
-                <button>prev</button>
+                <Button
+                  text='PREV'
+                  onClick={()=>{swipePrev(currentDay)}}
+                />
                 <input type="date" onChange={(e)=>{setCurrentDay(e.target.value);}} value={currentDay}/>
                 
                 <Button
                   text='GO!'
                   onClick={()=>{onDayChange(currentDay)}}
                 />
+<<<<<<< HEAD
                 <button>next</button>
+=======
+              
+                <Button
+                  text='NEXT'
+                  onClick={()=>{swipeNext(currentDay)}}
+                />
+>>>>>>> 90ad0749475b791f1d39f19973f9db439de094a7
                 <APOD
                   size="full"
                   date={currentDay}
                 />
           </ContainerItem>
           <ContainerItem>
+<<<<<<< HEAD
           {stateRange.next.map((item)=>{
 
       return <APOD
@@ -95,6 +124,16 @@ const App =()=> {
         />
       
           })}
+=======
+          {
+              stateRange.next.map((item)=>{
+                      return <APOD
+                      date={item.toString()}
+                      size='min'
+                      onClick={()=>{onDayChange(item.toString())}}
+                      />})
+          }
+>>>>>>> 90ad0749475b791f1d39f19973f9db439de094a7
           </ContainerItem>
        </Container>
       </div>
