@@ -36,7 +36,7 @@ const App =()=> {
               setTimeout(()=>{
                   console.log(stateRange)
                   setLoad(false)
-                },1500)
+                },100)
              
   }
   const swipeNext = day =>{
