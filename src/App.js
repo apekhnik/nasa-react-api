@@ -5,6 +5,7 @@ import Container from './component/Container/Container'
 import ContainerItem from './component/Container/ContainerItem'
 import Loader from './component/Loader/Loader';
 import Button from './component/Button/Button'
+import ControlForm from './component/Form/Form';
 const App =()=> {
 
   const [currentDay, setCurrentDay] = useState('2015-05-08')
@@ -16,14 +17,65 @@ const App =()=> {
   
   
   
-  
+  const countOfdaysInMounth = day => {
+    const mounth = Number(day.slice(5,7))-1
+    switch (mounth) {
+      case 1:
+        return 31;
+      case 2:
+        return 28;
+      case 3:
+        return 31;
+      case 4:
+        return 30;
+      case 5:
+        return 31;
+      case 6:
+        return 30;
+      case 7:
+        return 31;
+      case 8:
+        return 31;
+      case 9:
+        return 30;
+      case 10:
+        return 31;
+      case 11:
+        return 30;
+      case 12:
+        return 31;
+      default:
+        break;
+    }
+  }
   const onDayChange =day=>{ 
           const daysRangePrev = [];
           const daysRangeNext = [];
+          console.log(countOfdaysInMounth(day),'days count')
               setLoad(true)
                       for(let i=1;i<4;i++){
-                        daysRangePrev.push(`${day.slice(0,8)}${(Number(day.slice(8))-i)}`)
-                        console.log(`${day.slice(0,8)}${(Number(day.slice(8))-i)}`)
+                        let incomingDay = (Number(day.slice(8))-i)===0?countOfdaysInMounth(day):Number(day.slice(8))-i
+                        console.log(Number(day.slice(8))-i)
+                        // switch (Number(day.slice(8))) {
+                        //   case 4:
+                        //      help = countOfdaysInMounth(day)
+                        //     break;
+                        //   case 3:
+                        //      help = countOfdaysInMounth(day)-1
+                        //     break;
+                        //   case 2:
+                        //      help = countOfdaysInMounth(day)-2
+                        //     break;
+                        //   case 3:
+                        //      help = countOfdaysInMounth(day)-3
+                        //     break;
+                        //   default:
+                        //     break;
+                        // }
+                        
+                        let dayZ = (Number(day.slice(8))===4)?countOfdaysInMounth(day):(Number(day.slice(8))-i)
+                        daysRangePrev.push(`${day.slice(0,8)}${incomingDay}`)
+                        console.log(incomingDay)
                       }
                       for(let i=1;i<4;i++){
                         daysRangeNext.push(`${day.slice(0,8)}${(Number(day.slice(8))+i)}`)
@@ -80,6 +132,14 @@ const App =()=> {
      
           </ContainerItem>
           <ContainerItem>
+                {/* <ControlForm
+                  inputType='date'
+                  inputValue={currentDay}
+                  inputOnchange={(e)=>{setCurrentDay(e.target.value)}}
+                  onClickPrev={()=>{swipePrev(currentDay)}}
+                  onClickNext={()=>{swipeNext(currentDay)}}
+                  onClickLoad={()=>{onDayChange(currentDay)}}
+                /> */}
                 <Button
                   text='PREV'
                   onClick={()=>{swipePrev(currentDay)}}
