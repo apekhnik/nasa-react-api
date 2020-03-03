@@ -75,16 +75,23 @@ const App =()=> {
   const swipeNext = day =>{
     const nextDay = `${day.slice(0,8)}${Number(day.slice(8))+1}`
     const days = Number(day.slice(8)),
-          mounth = Number(day.slice(6,7)),
+          mounth = Number(day.slice(5,7)),
           year = Number(day.slice(0,4))
     console.log(countOfdaysInMounth(day))
     if(Number(day.slice(8))===countOfdaysInMounth(day, 'next')){
-      console.log(`${day.slice(0,5)}0${(mounth+1)}-${1}`)
-      onDayChange(`${day.slice(0,5)}0${(mounth+1)}-${1}`)
+      if(mounth===12){
+
+        console.log(`${year+1}-${1}-${1}`)
+        onDayChange(`${year+1}-${1}-${1}`)
+      }else{
+        console.log(`${day.slice(0,5)}0${(mounth+1)}-${1}`)
+        onDayChange(`${day.slice(0,5)}0${(mounth+1)}-${1}`)
+      }
+      
     }else{
       onDayChange(nextDay)
     }
-    
+    console.log(mounth)
   }
   const swipePrev = day =>{
     const preDays = `${day.slice(0,8)}${Number(day.slice(8))-1}`
