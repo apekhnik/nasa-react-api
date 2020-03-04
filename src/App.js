@@ -143,29 +143,16 @@ const App =()=> {
      
           </ContainerItem>
           <ContainerItem>
-                {/* <ControlForm
+                <ControlForm
                   inputType='date'
                   inputValue={currentDay}
                   inputOnchange={(e)=>{setCurrentDay(e.target.value)}}
                   onClickPrev={()=>{swipePrev(currentDay)}}
                   onClickNext={()=>{swipeNext(currentDay)}}
                   onClickLoad={()=>{onDayChange(currentDay)}}
-                /> */}
-                <Button
-                  text='PREV'
-                  onClick={()=>{swipePrev(currentDay)}}
                 />
-                <input type="date" onChange={(e)=>{setCurrentDay(e.target.value);}} value={currentDay}/>
                 
-                <Button
-                  text='GO!'
-                  onClick={()=>{onDayChange(currentDay)}}
-                />
-              
-                <Button
-                  text='NEXT'
-                  onClick={()=>{swipeNext(currentDay)}}
-                />
+
                 <APOD
                   size="full"
                   date={currentDay}

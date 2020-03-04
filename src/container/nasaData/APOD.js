@@ -37,7 +37,7 @@ const APOD = ({date, size, onClick}) => {
         
     }
     const sizeRender = size === 'min'? 'apod-min':'apod-full'
-
+    const show = showExplanation ? 'show-info': 'hide-info'
     const classname = classnames( sizeRender)
     if(load){
         return <Loader/>
@@ -53,7 +53,7 @@ const APOD = ({date, size, onClick}) => {
             {showExplanation?
             <Text text={apod.explanation}/>:null
             }
-            <Button onClick={()=>setShowExplanation(!showExplanation)} text={'INFO'}/>
+            <Button onClick={()=>setShowExplanation(!showExplanation)} text={'I'} className={show} show={showExplanation}/>
             
             </div>
         

@@ -2,10 +2,20 @@
     width: 200px;
     padding: 0;
     position: relative;
-    
+    animation: 0.7s opacity linear;
     box-sizing: border-box;
-    
-    
+    height: 200px;
+    border-radius: 5px;
+    background-color: #00a8ff;
+    margin-bottom: 10px;
+}
+.apod-min img {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    border-radius: 5px;
+    /* position: absolute;
+    left: 0; */
 }
 .apod-min:hover h5 {
     opacity: 1;
@@ -18,7 +28,7 @@
     color: white;
     top: 0;
     opacity: 0;
-    left: 10%;
+    left: calc(20% - 2rem);
     transition: all .3s;
 }
 .apod-min p{
@@ -36,22 +46,15 @@
 .apod-min span{
     display: none;
 }
-.apod-min img {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    border-radius: 5px;
-    /* position: absolute;
-    left: 0; */
-}
+
 .apod-full {
     width: 520px;
     min-height: 300px;
-    background-color: #353b48;
+    background-color: #00a8ff;
     margin: 0;
     border-radius: 5px;
     position: relative;
-    padding: 10px;
+    padding: 5px;
     box-sizing: border-box;
     
 }
@@ -67,7 +70,6 @@
 
 .apod-full span{
     color: white;
-    
     transition: all 10s linear;
     font-size: 14px;
     position: absolute;
@@ -76,6 +78,7 @@
     right: 10px;
     animation: 0.4s opacity linear;
     z-index: 10;
+    font-size: 14px;
 }
 .apod-full span:before{
     content: '';

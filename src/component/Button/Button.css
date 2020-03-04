@@ -1,0 +1,38 @@
+.button {
+    background-color: #2c3e50;
+    border: transparent;
+    color: white;
+    font-size: 18px;
+}
+.button:active{
+    background:#00a8ff;
+}
+.procent100-width {
+    width:100%;
+    margin-top: 3px;
+}
+.procent-height {
+    
+    height: 50px;
+}
+.show-info{
+    background-color: #2ecc71;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    outline: none;
+}
+.hide-info{
+    background-color: #e67e22;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    outline: none;
+}
+.info{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    outline: none;
+    /* background-color: #e67e22; */
+}
