@@ -12,6 +12,7 @@ const APOD = ({date, size, onClick}) => {
     const [load, setLoad] = useState(false)
     const [apod, setApod] = useState({})
     const [showExplanation, setShowExplanation] = useState(false)
+    const [src, setSrc] = useState(true)
     useEffect(()=>{
         getData(date)
         
@@ -29,7 +30,9 @@ const APOD = ({date, size, onClick}) => {
                 hdurl: response.hdurl,
                 title: response.title,
                 copyright: response.copyright
-                }) 
+                })
+                setSrc(response.url)
+                
         } catch (error) {
             console.log(error)
         }
@@ -39,6 +42,10 @@ const APOD = ({date, size, onClick}) => {
     const sizeRender = size === 'min'? 'apod-min':'apod-full'
     const show = showExplanation ? 'show-info': 'hide-info'
     const classname = classnames( sizeRender)
+    // const src = src.slice(0,19)==='https://www.youtube' ? true : false
+    
+    // // const image = ss ? 'https://avatars.mds.yandex.net/get-zen_doc/1535103/pub_5e54a284e977e25b8eec7656_5e54b527b7ff5817661e78c9/scale_1200' :  apod.url
+    // // console.log(image)
     if(load){
         return <Loader/>
     }
@@ -49,6 +56,13 @@ const APOD = ({date, size, onClick}) => {
             <Image
                 src={apod.url}
             />
+            {/* {src && sizeRender === 'apod-full' ?
+            <iframe id="ytplayer" type="text/html" width='100%' height='100%'
+            src={apod.url}
+            frameBorder="0"/>: <Image
+            src={apod.url}
+            />
+            } */}
             <Badge date={apod.date}/>
             {showExplanation?
             <Text text={apod.explanation}/>:null
