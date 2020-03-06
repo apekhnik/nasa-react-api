@@ -77,7 +77,7 @@
 .apod-full span{
     color: white;
     transition: all 10s linear;
-    font-size: 14px;
+    font-size: 0.5em;
     position: absolute;
     bottom: 15px;
     left: 10px;
@@ -95,7 +95,7 @@
     z-index: -1;
     left: 0;
     top: 0;
-    opacity: .3;
+    opacity: .5;
 }
 
 .apod-full p{
