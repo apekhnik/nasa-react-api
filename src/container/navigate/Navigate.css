@@ -1,9 +1,8 @@
 .navigate{
     width: 300px;
     height: 100vh;
-    display: flex;
     background-color: tomato;
-    transition: .5s all linear;
+    transition: .5s all ease-in-out;
     position: absolute;
     z-index: 1000;
 }
