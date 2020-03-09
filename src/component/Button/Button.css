@@ -36,3 +36,10 @@
     outline: none;
     /* background-color: #e67e22; */
 }
+.nav-btn{
+    position: absolute;
+    top: 15px;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+}

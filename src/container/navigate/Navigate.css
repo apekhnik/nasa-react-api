@@ -1,0 +1,15 @@
+.navigate{
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    background-color: tomato;
+    transition: .5s all linear;
+    position: absolute;
+    z-index: 1000;
+}
+.nav-show{
+    transform: translateX(0)
+}
+.nav-hide{
+    transform: translateX(-300px)
+}

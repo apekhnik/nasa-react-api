@@ -35,10 +35,7 @@ const APOD = ({date, size, onClick}) => {
                 
                 checker = (size==='full'&& response.url.slice(0,19)==='https://www.youtube' || response.url.slice(0,19)==='https://player.vime') ? true : false
                 setSrc(checker)
-                const response1 = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-4-6&api_key=${API_KEY}`)
-            .then(response=>response.json())
-
-            console.log(response1)
+                
         } catch (error) {
             console.log(error)
         }
