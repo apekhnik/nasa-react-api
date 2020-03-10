@@ -13,6 +13,9 @@
     transition: .4s all ease-in-out;
     position: relative;
 }
+.api-item h3 {
+    
+}
 .api-item .first {
     position: absolute;
     top: 10px;
@@ -41,7 +44,7 @@
     transform: scale(1.1);
 }
 .api-item:hover .first{
-    left: 70px;
+    left: 75px;
 }
 .api-item:hover .second{
     right: 90px;
@@ -50,9 +53,53 @@
     left: 100px;
 }
 .api-item:hover .fourth{
-    right: 100px;
+    right: 106px;
 }
 .api-item img {
     width: 100%;
     height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.api-item:hover .first2{
+    left: 75px;
+}
+.api-item:hover .second2{
+    right: 100px;
+}
+.api-item:hover .third2{
+    left: 115px;
+}
+.api-item .first2 {
+    position: absolute;
+    top: 30px;
+    left: -105px;
+    transition: .4s all ease-in-out;
+}
+.api-item .second2 {
+    position: absolute;
+    top: 60px;
+    right: -105px;
+    transition: .4s all ease-in-out;
+}
+.api-item .third2 {
+    position: absolute;
+    top: 90px;
+    left: -105px;
+    transition: .4s all ease-in-out;
 }
