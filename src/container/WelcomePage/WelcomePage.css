@@ -1,0 +1,58 @@
+.api-item__container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.api-item {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: .4s all ease-in-out;
+    position: relative;
+}
+.api-item .first {
+    position: absolute;
+    top: 10px;
+    left: -105px;
+    transition: .4s all ease-in-out;
+}
+.api-item .second {
+    position: absolute;
+    top: 30px;
+    right: -105px;
+    transition: .4s all ease-in-out;
+}
+.api-item .third {
+    position: absolute;
+    top: 50px;
+    left: -105px;
+    transition: .4s all ease-in-out;
+}
+.api-item .fourth {
+    position: absolute;
+    top: 70px;
+    right: -105px;
+    transition: .4s all ease-in-out;
+}
+.api-item:hover {
+    transform: scale(1.1);
+}
+.api-item:hover .first{
+    left: 70px;
+}
+.api-item:hover .second{
+    right: 90px;
+}
+.api-item:hover .third{
+    left: 100px;
+}
+.api-item:hover .fourth{
+    right: 100px;
+}
+.api-item img {
+    width: 100%;
+    height: 100%;
+}
