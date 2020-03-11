@@ -14,7 +14,7 @@ const APODpage =()=>{
     
     
     useEffect(()=>{
-      imageTest()
+      
     },[])
     const countOfdaysInMounth = (day,arg) => {
       const mounth =arg==='prev'?Number(day.slice(5,7))-1:Number(day.slice(5,7))
@@ -71,18 +71,7 @@ const APODpage =()=>{
                   },100)
                
     }
-    const imageTest =async()=> {
-      try {
-        const response1 = await fetch(`https://images-api.nasa.gov/search?q=bear&page=2`)
-              .then(response=>response.json())
-  
-              console.log(response1.collection.items[6].links[0].href)
-              console.log(response1.collection.items[6].data[0].description)
-              console.log(response1.collection.items[6])
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    
     const swipeNext = day =>{
       const nextDay = `${day.slice(0,8)}${Number(day.slice(8))+1}`
       const days = Number(day.slice(8)),

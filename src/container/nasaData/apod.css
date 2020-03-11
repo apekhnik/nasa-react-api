@@ -49,6 +49,7 @@
 
 .apod-full {
     width: 40vw;
+    min-height: 450px;
     height: 70vh;
     background-color: #00a8ff;
     margin: 0;
@@ -95,7 +96,7 @@
     z-index: -1;
     left: 0;
     top: 0;
-    opacity: .5;
+    opacity: .8;
 }
 
 .apod-full p{

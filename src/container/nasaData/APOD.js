@@ -4,7 +4,10 @@ import Title from '../../component/Title/Title'
 import Badge from '../../component/Badge/Badge'
 import Text from '../../component/Text/Text'
 import './apod.css'
-import {API_KEY} from '../../constants.js'
+import {
+    API_KEY,
+    IMAGE_FOR_PLUG_APOD
+} from '../../constants.js'
 import classnames from 'classnames'
 import Button from '../../component/Button/Button'
 import Loader from '../../component/Loader/Loader'
@@ -45,8 +48,8 @@ const APOD = ({date, size, onClick}) => {
             setApod({
                 explanation: 'test',
                 date: date,
-                url: 'https://yt3.ggpht.com/a/AGF-l79QWgqALvdnS8JMC-JqrgSMk17GwzQS96xz3Q=s900-c-k-c0xffffffff-no-rj-mo',
-                hdurl: 'https://yt3.ggpht.com/a/AGF-l79QWgqALvdnS8JMC-JqrgSMk17GwzQS96xz3Q=s900-c-k-c0xffffffff-no-rj-mo',
+                url: IMAGE_FOR_PLUG_APOD,
+                hdurl: IMAGE_FOR_PLUG_APOD,
                 title: 'test title',
                 copyright: 'copyright'
                 })

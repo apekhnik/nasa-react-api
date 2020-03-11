@@ -1,0 +1,8 @@
+.media-search__container {
+    display: grid;
+    
+}
+.media-search__container img {
+    width: 100px;
+    height: 100px;
+}
