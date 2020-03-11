@@ -12,12 +12,15 @@ const APOD = ({date, size, onClick}) => {
     const [load, setLoad] = useState(false)
     const [apod, setApod] = useState({})
     const [showExplanation, setShowExplanation] = useState(false)
-    const [src, setSrc] = useState()
+    const [fullVideo, setFullVideo] = useState()
+    const [videoPlug, setVideoPlug] = useState(false)
+
     useEffect(()=>{
         getData(date)
         
     },[])
     let checker = false
+    let checkerMin = false
     const getData = async(date)=>{
         setLoad(true)
         try {
@@ -34,8 +37,9 @@ const APOD = ({date, size, onClick}) => {
                 })
                 
                 checker = (size==='full'&& response.url.slice(0,19)==='https://www.youtube' || response.url.slice(0,19)==='https://player.vime') ? true : false
-                setSrc(checker)
-                
+                checkerMin = (size==='min' && response.url.slice(0,19)==='https://www.youtube' || response.url.slice(0,19)==='https://player.vime') ? true : false
+                setFullVideo(checker)
+                setVideoPlug(checkerMin)
         } catch (error) {
             console.log(error)
         }
@@ -48,26 +52,28 @@ const APOD = ({date, size, onClick}) => {
     if(load){
         return <Loader/>
     }
-    return(
-        
+    if(videoPlug){
+        return (
             <div className={classname} onClick={onClick}>
-            <Title title={apod.title}/>
-            {/* <Image
-                src={apod.url}
-            /> */}
-            {src ?
-            <iframe id="ytplayer" type="text/html" width='100%' height='100%'
-            src={apod.url}
-            frameBorder="0"/>: <Image
-            src={apod.url}
-            />
-            }
-            <Badge date={apod.date}/>
-            {showExplanation?
-            <Text text={apod.explanation}/>:null
-            }
-            <Button onClick={()=>setShowExplanation(!showExplanation)} text={'I'} className={show} show={showExplanation}/>
-            
+                    <Title title={apod.title}/> 
+                    <Image src='https://yt3.ggpht.com/a/AGF-l79QWgqALvdnS8JMC-JqrgSMk17GwzQS96xz3Q=s900-c-k-c0xffffffff-no-rj-mo'/>
+                    <Badge date={apod.date}/>
+            </div>
+        )
+    }
+        return(
+            <div className={classname} onClick={onClick}>
+                    <Title title={apod.title}/>
+                    {fullVideo ?
+                    <iframe id="ytplayer" type="text/html" width='100%' height='100%'
+                    src={apod.url}
+                    frameBorder="0"/>: <Image src={apod.url}/> 
+                    }
+                    <Badge date={apod.date}/>
+                    {showExplanation?
+                    <Text text={apod.explanation}/>:null
+                    }
+                    <Button onClick={()=>setShowExplanation(!showExplanation)} text={'I'} className={show} show={showExplanation}/>
             </div>
         
        
