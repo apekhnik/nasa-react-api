@@ -42,6 +42,14 @@ const APOD = ({date, size, onClick}) => {
                 setVideoPlug(checkerMin)
         } catch (error) {
             console.log(error)
+            setApod({
+                explanation: 'test',
+                date: date,
+                url: 'https://yt3.ggpht.com/a/AGF-l79QWgqALvdnS8JMC-JqrgSMk17GwzQS96xz3Q=s900-c-k-c0xffffffff-no-rj-mo',
+                hdurl: 'https://yt3.ggpht.com/a/AGF-l79QWgqALvdnS8JMC-JqrgSMk17GwzQS96xz3Q=s900-c-k-c0xffffffff-no-rj-mo',
+                title: 'test title',
+                copyright: 'copyright'
+                })
         }
         setLoad(false)
         
