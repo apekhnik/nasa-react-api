@@ -1,8 +1,16 @@
+.media-search {
+    width: 100%;
+}
 .media-search__container {
-    display: grid;
-    
+    width: 100%;   
+    display: flex;
+}
+.media-columns {
+
+}
+.media-search__container__item {
+    width: 300px;
 }
 .media-search__container img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
 }

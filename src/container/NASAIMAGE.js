@@ -23,11 +23,47 @@ const NASAIMAGE =()=>{
             <h1>NEW COMPONENT ATTENTION</h1>
            
             <div className='media-search__container'>
-            {searchRes.map((item)=>{
-               console.log(item.links[0].href)
-               return <img src={item.links[0].href} alt=''/>
-                
-            })}
+            
+                        <div className='media-columns'>
+                                {searchRes.map((item, index)=>{
+                                        console.log(index)
+                                        while(index<26){
+                                            return   <div className='media-search__container__item' id={index}>
+                                                        <img src={item.links[0].href} alt=''/>
+                                                    </div>
+                                        }
+                                })}     
+                        </div>
+                        <div className='media-columns'>
+                                {searchRes.map((item, index)=>{
+                                        console.log(index)
+                                        while(index>26&&index<51){
+                                            return   <div className='media-search__container__item' id={index}>
+                                                        <img src={item.links[0].href} alt=''/>
+                                                    </div>
+                                        }
+                                })} 
+                        </div>
+                        <div className='media-columns'>
+                                {searchRes.map((item, index)=>{
+                                        console.log(index)
+                                        while(index>50&&index<76){
+                                            return   <div className='media-search__container__item' id={index}>
+                                                        <img src={item.links[0].href} alt=''/>
+                                                    </div>
+                                        }
+                                })} 
+                        </div>
+                        <div className='media-columns'>
+                                {searchRes.map((item, index)=>{
+                                        console.log(index)
+                                        while(index>75&&index<101){
+                                            return   <div className='media-search__container__item' id={index}>
+                                                        <img src={item.links[0].href} alt=''/>
+                                                    </div>
+                                        }
+                                })} 
+                        </div>
             </div>
         </div>
     )
