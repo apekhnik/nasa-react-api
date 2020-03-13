@@ -18,12 +18,19 @@
     margin-bottom: 5px;
     position: relative;
     overflow: hidden;
+    transition: all .4s ease-in-out;
+    border-radius: 7px;
 }
 .media-search__container__item:hover #nasa-title{
    top: 0;
 }
+.media-search__container__item:hover {
+    transform: scale(1.15);
+    z-index: 200;
+}
 .media-search__container img {
     width: 100%;
+    border-radius: 7px;
 }
 .media-search__container__item .title {
     position: absolute;
