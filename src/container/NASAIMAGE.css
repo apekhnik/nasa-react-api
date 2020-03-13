@@ -1,16 +1,50 @@
 .media-search {
     width: 100%;
+    
+    
 }
 .media-search__container {
-    width: 100%;   
+    width: 85%;   
     display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 .media-columns {
-
+    width: 24%;
 }
 .media-search__container__item {
-    width: 300px;
+    width: 100%;
+    margin-bottom: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.media-search__container__item:hover #nasa-title{
+   top: 0;
 }
 .media-search__container img {
     width: 100%;
+}
+.media-search__container__item .title {
+    position: absolute;
+    color: white;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    top: -200px;
+    transition: all .4s ease-in-out;
+}
+.media-search__container__item .title h5 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.media-search__container__item .title:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    left: 0;
+    opacity: .7;
+    z-index: -1;
 }

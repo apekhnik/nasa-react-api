@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import classnames from 'classnames'
 import Button from '../../component/Button/Button'
 const Navigate =()=>{
-    const [navigate, setNavigate] = useState(true)
+    const [navigate, setNavigate] = useState(false)
     const vision = navigate ? 'nav-show':'nav-hide'
     const classname = classnames('navigate', vision)
     return(
