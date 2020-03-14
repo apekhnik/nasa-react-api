@@ -3,24 +3,40 @@ import './NASAIMAGE.css'
 import NASASEARCHitem from '../component/NASASEARCHitem/NASASEARCHitem'
 import Button from '../component/Button/Button'
 import Loader from '../component/Loader/Loader'
+import Checkbox from '../component/Checkbox/Checkbox'
 const NASAIMAGE =()=>{
-    const [searchRes, setSearchRes] = useState([])
+    const [searchResult, setSearchResult] = useState([])
     const [searchRequest, setSearchRequest] = useState('')
     const [load, setLoad] = useState(false)
-
-
+    
+                                                
     useEffect(()=>{
         getData()
     },[])
 
-
+    const paramObject =
+        {
+        image: true,
+        video: false, 
+        audio: false}
+    const getSearchParams = obj => {
+        let arr = []
+        let image = obj.image === true ? 'image': ''
+        let audio = obj.audio === true ? 'audio': ''
+        let video = obj.video === true ? 'video': ''
+        arr.push(image, video, audio)
+        let stroke = arr.join(',')
+        console.log(stroke)
+        return stroke
+        
+    }
     const getData = async (request='moon')=>{
         setLoad(true)
         try {
-            const response1 = await fetch(`https://images-api.nasa.gov/search?q=${request}&media_type=image`)
+            const response1 = await fetch(`https://images-api.nasa.gov/search?q=${request}&media_type=${getSearchParams(paramObject)}`)
                   .then(response=>response.json())
                   console.log(response1)
-                  setSearchRes(response1.collection.items)
+                  setSearchResult(response1.collection.items)
 
 
                   const response = await fetch(`https://images-api.nasa.gov/search?q=${request}&media_type=video&year_start=2018&year_end=2019`)
@@ -42,14 +58,15 @@ const NASAIMAGE =()=>{
             <div className=''>
                 <input type='text' onChange={(e)=>setSearchRequest(e.target.value)}/>
                 <Button text='go' onClick={()=>getData(searchRequest)}/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <Checkbox label='image' onChange={(e)=>paramObject.image = e.target.checked} />
+                <Checkbox label='video' onChange={(e)=>paramObject.video = e.target.checked} />
+                <Checkbox label='audio' onChange={(e)=>paramObject.audio = e.target.checked} />
+                <Button onClick={()=>getSearchParams(paramObject)} text='h'/>
             </div>
             <div className='media-search__container'>
             
                         <div className='media-columns'>
-                                {searchRes.map((item, index)=>{
+                                {searchResult.map((item, index)=>{
                                        
                                         while(index<26){
                                             return  <NASASEARCHitem
@@ -61,7 +78,7 @@ const NASAIMAGE =()=>{
                                 })}     
                         </div>
                         <div className='media-columns'>
-                                {searchRes.map((item, index)=>{
+                                {searchResult.map((item, index)=>{
                                         
                                         while(index>26&&index<51){
                                             return  <NASASEARCHitem
@@ -72,7 +89,7 @@ const NASAIMAGE =()=>{
                                 })} 
                         </div>
                         <div className='media-columns'>
-                                {searchRes.map((item, index)=>{
+                                {searchResult.map((item, index)=>{
                                         
                                         while(index>50&&index<76){
                                             return  <NASASEARCHitem
@@ -83,7 +100,7 @@ const NASAIMAGE =()=>{
                                 })} 
                         </div>
                         <div className='media-columns'>
-                                {searchRes.map((item, index)=>{
+                                {searchResult.map((item, index)=>{
                                         
                                         while(index>75&&index<101){
                                             return  <NASASEARCHitem
