@@ -20,14 +20,26 @@
     overflow: hidden;
     transition: all .4s ease-in-out;
     border-radius: 7px;
+    animation: ease-in-out .4s fadeIn;
 }
 .media-search__container__item:hover #nasa-title{
    top: 0;
 }
 .media-search__container__item:hover {
-    transform: scale(1.15);
+    transform: scale(1.02);
     z-index: 200;
 }
+.media-search__container__item:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .3;
+}
+.media-search__container__item:hover:before{
+    opacity: 0;
+ }
 .media-search__container img {
     width: 100%;
     border-radius: 7px;
@@ -54,4 +66,16 @@
     left: 0;
     opacity: .7;
     z-index: -1;
+}
+
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
 }
