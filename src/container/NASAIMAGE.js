@@ -8,38 +8,41 @@ const NASAIMAGE =()=>{
     const [searchResult, setSearchResult] = useState([])
     const [searchRequest, setSearchRequest] = useState('')
     const [load, setLoad] = useState(false)
+
+    const [mediaType_image, setMediaType_image] = useState(true)   
+    const [mediaType_audio, setMediaType_audio] = useState(false)   
+    const [mediaType_video, setMediaType_video] = useState(false)   
     
-                                                
     useEffect(()=>{
         getData()
     },[])
 
-    const paramObject =
-        {
-        image: true,
-        video: false, 
-        audio: false}
-    const getSearchParams = obj => {
+
+    const getSearchParams = () => {
         let arr = []
-        let image = obj.image === true ? 'image': ''
-        let audio = obj.audio === true ? 'audio': ''
-        let video = obj.video === true ? 'video': ''
+        let image = mediaType_image === true ? 'image': ''
+        let audio = mediaType_audio === true ? 'audio': ''
+        let video = mediaType_video === true ? 'video': ''
         arr.push(image, video, audio)
         let stroke = arr.join(',')
         console.log(stroke)
         return stroke
         
     }
+    const mediaType = getSearchParams()
+    
+    
+    
     const getData = async (request='moon')=>{
         setLoad(true)
         try {
-            const response1 = await fetch(`https://images-api.nasa.gov/search?q=${request}&media_type=${getSearchParams(paramObject)}`)
+            const response1 = await fetch(`https://images-api.nasa.gov/search?q=${request}&media_type=${mediaType}`)
                   .then(response=>response.json())
                   console.log(response1)
                   setSearchResult(response1.collection.items)
 
 
-                  const response = await fetch(`https://images-api.nasa.gov/search?q=${request}&media_type=video&year_start=2018&year_end=2019`)
+                  const response = await fetch(`https://images-api.nasa.gov/search?q=${request}&media_type=audio&year_start=2018&year_end=2019`)
                             .then(response=>response.json())
                  console.log(response) 
           } catch (error) {
@@ -47,6 +50,20 @@ const NASAIMAGE =()=>{
           }
           setLoad(false)
     }
+
+    const imageCheckbox = ({ target: { checked } }) => {
+        setMediaType_image(checked);
+    };
+    const videoCheckbox = ({ target: { checked } }) => {
+        setMediaType_video(checked);
+    };
+    const audioCheckbox = ({ target: { checked } }) => {
+        setMediaType_audio(checked);
+    };
+
+
+
+    console.log(mediaType_image,mediaType_video,mediaType_audio)
     if(load){
        return <div className='media-search'>
 
@@ -58,10 +75,11 @@ const NASAIMAGE =()=>{
             <div className=''>
                 <input type='text' onChange={(e)=>setSearchRequest(e.target.value)}/>
                 <Button text='go' onClick={()=>getData(searchRequest)}/>
-                <Checkbox label='image' onChange={(e)=>paramObject.image = e.target.checked} />
-                <Checkbox label='video' onChange={(e)=>paramObject.video = e.target.checked} />
-                <Checkbox label='audio' onChange={(e)=>paramObject.audio = e.target.checked} />
-                <Button onClick={()=>getSearchParams(paramObject)} text='h'/>
+                <Checkbox label='image' onChange={imageCheckbox} checked={mediaType_image}/>
+                <Checkbox label='video' onChange={videoCheckbox} checked={mediaType_video}/>
+                {/* <Checkbox label='audio' onChange={audioCheckbox} checked={mediaType_audio}/> */}
+
+                
             </div>
             <div className='media-search__container'>
             
