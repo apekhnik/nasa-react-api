@@ -63,7 +63,7 @@ const NASAIMAGE =()=>{
 
 
 
-    console.log(mediaType_image,mediaType_video,mediaType_audio)
+    
     if(load){
        return <div className='media-search'>
 
@@ -71,13 +71,15 @@ const NASAIMAGE =()=>{
     }
     return(
         <div className='media-search'>
-            <h1>NEW COMPONENT ATTENTION</h1>
-            <div className=''>
+            <h1>NNASA IMAGE SEARCH</h1>
+            <div className='nasa-image-search'>
                 <input type='text' onChange={(e)=>setSearchRequest(e.target.value)}/>
-                <Button text='go' onClick={()=>getData(searchRequest)}/>
-                <Checkbox label='image' onChange={imageCheckbox} checked={mediaType_image}/>
-                <Checkbox label='video' onChange={videoCheckbox} checked={mediaType_video}/>
-                {/* <Checkbox label='audio' onChange={audioCheckbox} checked={mediaType_audio}/> */}
+                <Button text='SEARCH' onClick={()=>getData(searchRequest)}/>
+                <div className='checkbox-container'>
+                    <Checkbox label='image' onChange={imageCheckbox} checked={mediaType_image}/>
+                    <Checkbox label='video' onChange={videoCheckbox} checked={mediaType_video}/>
+                    <Checkbox label='audio' onChange={audioCheckbox} checked={mediaType_audio} disabled/>
+                </div>
 
                 
             </div>
