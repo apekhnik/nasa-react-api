@@ -9,27 +9,27 @@ const Navigate =()=>{
     const classname = classnames('navigate', vision)
     return(
         <div className={classname}>
-            <div className='navigate-item'>
+            
                     <NavLink
                             to="/"
-                            className=""
+                            className="navigate-item"
                             >HOME
                     </NavLink>
-            </div>
-            <div className='navigate-item'>
+            
+            
                     <NavLink
                             to="/APOD"
-                            className=""
+                            className="navigate-item"
                             >Astronimic Picture of Day
                     </NavLink>
-            </div>
-            <div className='navigate-item'>
+            
+            
                     <NavLink
                             to="/media-search"
-                            className=""
+                            className="navigate-item"
                             >NASA media search
                     </NavLink>
-            </div>
+            
            <Button text={navigate ? 'C' : 'O'} onClick={()=>setNavigate(!navigate)} className='nav-btn'/>
         </div>
     )

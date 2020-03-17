@@ -3,6 +3,13 @@
     
     
 }
+.search-loader-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 .media-search h1 {
     text-align: center;
 }
@@ -43,6 +50,9 @@
 .media-search__container__item:hover:before{
     opacity: 0;
  }
+.media-search__container__item:hover .layout-img {
+    opacity: 1;
+}
 .media-search__container img {
     width: 100%;
     border-radius: 7px;
@@ -80,6 +90,10 @@
     width: 100%;
     height: 35px;
     box-sizing: border-box;
+    outline: none;
+    font-size: 22px;
+    box-sizing: border-box;
+    padding: 2px;
 }
 .nasa-image-search button {
     position: absolute;

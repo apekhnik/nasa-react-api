@@ -5,7 +5,23 @@
     transition: .5s all ease-in-out;
     position: absolute;
     z-index: 1000;
+    box-sizing: border-box;
+    padding: 15px;
 }
+.navigate-item {
+    
+    display: block;
+    padding: 5px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+}
+.navigate-item a{
+   
+    
+}
+
 .nav-show{
     transform: translateX(0)
 }
