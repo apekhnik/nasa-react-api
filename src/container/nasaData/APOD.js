@@ -11,6 +11,7 @@ import {
 import classnames from 'classnames'
 import Button from '../../component/Button/Button'
 import Loader from '../../component/Loader/Loader'
+import NASASEARCHLoader from '../../component/NASASEARCHitem/NASASEARCHLoader'
 const APOD = ({date, size, onClick}) => {
     const [load, setLoad] = useState(false)
     const [apod, setApod] = useState({})
@@ -60,9 +61,10 @@ const APOD = ({date, size, onClick}) => {
     const sizeRender = size === 'min'? 'apod-min':'apod-full'
     const show = showExplanation ? 'show-info': 'hide-info'
     const classname = classnames( sizeRender)
-    if(load){
-        return <Loader/>
-    }
+    // if(load){
+    //     // return <Loader/>
+    //     return <NASASEARCHLoader/>
+    // }
     if(videoPlug){
         return (
             <div className={classname} onClick={onClick}>

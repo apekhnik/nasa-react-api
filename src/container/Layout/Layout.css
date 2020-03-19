@@ -1,6 +1,6 @@
 .layout{
     width: 100%;
     min-height: 100vh;
-    background-color: teal;
+    background-image: url('https://images.wallpaperscraft.ru/image/zvezdnoe_nebo_galaktika_zvezdy_125852_1920x1080.jpg');
     display: flex;
 }

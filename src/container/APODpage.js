@@ -4,8 +4,9 @@ import Container from '../component/Container/Container'
 import ContainerItem from '../component/Container/ContainerItem'
 import Loader from '../component/Loader/Loader';
 import ControlForm from '../component/Form/Form';
+import NASASEARCHLoader from '../component/NASASEARCHitem/NASASEARCHLoader'
 const APODpage =()=>{
-    const [currentDay, setCurrentDay] = useState('2015-05-8')
+    const [currentDay, setCurrentDay] = useState('2017-06-4')
     const [load, setLoad] = useState(false)
     const [stateRange, setRange] = useState({
                                         prev:['2015-05-05','2015-05-06','2015-05-07'],
@@ -125,6 +126,7 @@ const APODpage =()=>{
   
     if(load){
       return <Loader/>
+      // return <NASASEARCHLoader/>
     }
       return (
         <div className="App">

@@ -12,7 +12,7 @@ const Navigate =()=>{
             
                     <NavLink
                             to="/"
-                            className="navigate-item"
+                            className="navigate-item home"
                             >HOME
                     </NavLink>
             

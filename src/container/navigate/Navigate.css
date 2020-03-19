@@ -1,7 +1,8 @@
 .navigate{
     width: 300px;
     height: 100vh;
-    background-color: tomato;
+    background: rgb(222,174,238);
+    background: radial-gradient(circle, rgba(222,174,238,1) 0%, rgba(10,5,175,1) 100%);
     transition: .5s all ease-in-out;
     position: absolute;
     z-index: 1000;
@@ -9,13 +10,28 @@
     padding: 15px;
 }
 .navigate-item {
-    
     display: block;
-    padding: 5px;
-    border: 1px solid black;
+    padding: 10px;
+    transition: .4s all linear;
     margin-bottom: 10px;
     text-decoration: none;
     color: white;
+    border-radius: 4px;
+}
+.active {
+    -webkit-box-shadow: inset 1px 0px 13px 7px rgba(178,15,146,1);
+-moz-box-shadow: inset 1px 0px 13px 7px rgba(178,15,146,1);
+box-shadow: inset 1px 0px 13px 7px rgba(178,15,146,1);
+transition: .4s all linear;
+}
+.home {
+    
+    box-shadow: none!important;
+}
+.navigate-item:hover {
+    -webkit-box-shadow: 1px 0px 13px 7px rgba(178,15,146,1);
+    -moz-box-shadow: 1px 0px 13px 7px rgba(178,15,146,1);
+    box-shadow: 1px 0px 13px 7px rgba(178,15,146,1);
 }
 .navigate-item a{
    

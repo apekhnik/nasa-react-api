@@ -3,7 +3,7 @@ import './NASASEARCHitem.css'
 import Title from '../Title/Title'
 
 const NASASEARCHitem =({title, src, type})=>{
-
+    // console.log(type)
     if(type==='video'){
         return(
             <div className='media-search__container__item'>
