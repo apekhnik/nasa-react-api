@@ -4,7 +4,7 @@ import Container from '../component/Container/Container'
 import ContainerItem from '../component/Container/ContainerItem'
 import Loader from '../component/Loader/Loader';
 import ControlForm from '../component/Form/Form';
-import NASASEARCHLoader from '../component/NASASEARCHitem/NASASEARCHLoader'
+
 const APODpage =()=>{
     const [currentDay, setCurrentDay] = useState('2017-06-4')
     const [load, setLoad] = useState(false)
@@ -75,8 +75,7 @@ const APODpage =()=>{
     
     const swipeNext = day =>{
       const nextDay = `${day.slice(0,8)}${Number(day.slice(8))+1}`
-      const days = Number(day.slice(8)),
-            mounth = Number(day.slice(5,7)),
+      const mounth = Number(day.slice(5,7)),
             year = Number(day.slice(0,4))
       console.log(countOfdaysInMounth(day))
       if(Number(day.slice(8))===countOfdaysInMounth(day, 'next')){
@@ -96,8 +95,7 @@ const APODpage =()=>{
     }
     const swipePrev = day =>{
       const preDays = `${day.slice(0,8)}${Number(day.slice(8))-1}`
-      let days = Number(day.slice(8)),
-          mounth = (Number(day.slice(6,7))),
+      let mounth = (Number(day.slice(6,7))),
           year = Number(day.slice(0,4))
           if(Number(day.slice(8))-1===1){
                 if(mounth===1){

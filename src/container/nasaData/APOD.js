@@ -10,23 +10,17 @@ import {
 } from '../../constants.js'
 import classnames from 'classnames'
 import Button from '../../component/Button/Button'
-import Loader from '../../component/Loader/Loader'
-import NASASEARCHLoader from '../../component/NASASEARCHitem/NASASEARCHLoader'
 const APOD = ({date, size, onClick}) => {
-    const [load, setLoad] = useState(false)
+    
     const [apod, setApod] = useState({})
     const [showExplanation, setShowExplanation] = useState(false)
     const [fullVideo, setFullVideo] = useState()
     const [videoPlug, setVideoPlug] = useState(false)
 
-    useEffect(()=>{
-        getData(date)
-        
-    },[])
     let checker = false
     let checkerMin = false
     const getData = async(date)=>{
-        setLoad(true)
+
         try {
             const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`)
             .then(response=>response.json())
@@ -40,8 +34,8 @@ const APOD = ({date, size, onClick}) => {
                 copyright: response.copyright
                 })
                 
-                checker = (size==='full'&& response.url.slice(0,19)==='https://www.youtube' || response.url.slice(0,19)==='https://player.vime') ? true : false
-                checkerMin = (size==='min' && response.url.slice(0,19)==='https://www.youtube' || response.url.slice(0,19)==='https://player.vime') ? true : false
+                checker = ((size==='full'&& response.url.slice(0,19)==='https://www.youtube' )|| response.url.slice(0,19)==='https://player.vime') ? true : false
+                checkerMin = ((size==='min' && response.url.slice(0,19)==='https://www.youtube') || response.url.slice(0,19)==='https://player.vime') ? true : false
                 setFullVideo(checker)
                 setVideoPlug(checkerMin)
         } catch (error) {
@@ -55,9 +49,14 @@ const APOD = ({date, size, onClick}) => {
                 copyright: 'copyright'
                 })
         }
-        setLoad(false)
         
     }
+    useEffect(()=>{
+        getData(date)
+        
+    },[])
+    
+    
     const sizeRender = size === 'min'? 'apod-min':'apod-full'
     const show = showExplanation ? 'show-info': 'hide-info'
     const classname = classnames( sizeRender)

@@ -9,15 +9,9 @@ const NASAIMAGE =()=>{
     const [searchResult, setSearchResult] = useState([])
     const [searchRequest, setSearchRequest] = useState('')
     const [load, setLoad] = useState(false)
-
     const [mediaType_image, setMediaType_image] = useState(true)   
     const [mediaType_audio, setMediaType_audio] = useState(false)   
     const [mediaType_video, setMediaType_video] = useState(true)   
-    
-    useEffect(()=>{
-        getData()
-    },[])
-
 
     const getSearchParams = () => {
         let arr = []
@@ -31,9 +25,6 @@ const NASAIMAGE =()=>{
         
     }
     const mediaType = getSearchParams()
-    
-    
-    
     const getData = async (request=PLACEHOLDER_FOR_SEARCH)=>{
         setLoad(true)
         try {
@@ -49,7 +40,18 @@ const NASAIMAGE =()=>{
             console.log(error)
           }
           setLoad(false)
-    }
+    }    
+    useEffect(()=>{
+        getData()
+    },[])
+
+
+    
+    
+    
+    
+    
+  
 
     const imageCheckbox = ({ target: { checked } }) => {
         setMediaType_image(checked);
@@ -85,7 +87,6 @@ const NASAIMAGE =()=>{
             
                         <div className='media-columns'>
                                 {searchResult.map((item, index)=>{
-                                       
                                         while(index<26){
                                             return  <NASASEARCHitem
                                                         title={item.data[0].title}
@@ -95,6 +96,7 @@ const NASAIMAGE =()=>{
                                                         key={index}
                                                     /> 
                                         }
+                                        return index
                                 })}     
                         </div>
                         <div className='media-columns'>
@@ -108,6 +110,7 @@ const NASAIMAGE =()=>{
                                                         key={index}
                                                     /> 
                                         }
+                                        return null
                                 })} 
                         </div>
                         <div className='media-columns'>
@@ -121,6 +124,7 @@ const NASAIMAGE =()=>{
                                                         key={index}
                                                     /> 
                                         }
+                                        return null
                                 })} 
                         </div>
                         <div className='media-columns'>
@@ -134,6 +138,7 @@ const NASAIMAGE =()=>{
                                                         key={index}
                                                     /> 
                                         }
+                                        return null
                                 })} 
                         </div>
             </div>
