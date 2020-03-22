@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './NASAIMAGE.css'
-import NASASEARCHitem from '../component/NASASEARCHitem/NASASEARCHitem'
-import Button from '../component/Button/Button'
 import {PLACEHOLDER_FOR_SEARCH} from '../constants'
-import Checkbox from '../component/Checkbox/Checkbox'
 import NASASEARCHLoader from '../component/NASASEARCHitem/NASASEARCHLoader'
+import ContainerSearch from './ContainerSearch/ContainerSearch'
+import MainTitle from '../component/MainTitle/MainTitle'
+import NASASEARCHMEDIAContainer from './NASASEARCHMEDIAColumn/NASASEARCHMEDIAContainer'
 const NASAIMAGE =()=>{
     const [searchResult, setSearchResult] = useState([])
     const [searchRequest, setSearchRequest] = useState('')
@@ -20,7 +20,6 @@ const NASAIMAGE =()=>{
         let video = mediaType_video === true ? 'video': ''
         arr.push(image, video, audio)
         let stroke = arr.join(',')
-        console.log(stroke)
         return stroke
         
     }
@@ -73,75 +72,21 @@ const NASAIMAGE =()=>{
     }
     return(
         <div className='media-search'>
-            <h1>NNASA IMAGE SEARCH</h1>
-                <div className='nasa-image-search'>
-                    <input type='text' onChange={(e)=>setSearchRequest(e.target.value)} placeholder={PLACEHOLDER_FOR_SEARCH}/>
-                    <Button text='SEARCH' onClick={()=>getData(searchRequest)}/>
-                    <div className='checkbox-container'>
-                        <Checkbox label='image' onChange={imageCheckbox} checked={mediaType_image}/>
-                        <Checkbox label='video' onChange={videoCheckbox} checked={mediaType_video}/>
-                        <Checkbox label='audio' onChange={audioCheckbox} checked={mediaType_audio} disabled/>
-                    </div>  
-                </div>
-            <div className='media-search__container'>
-            
-                        <div className='media-columns'>
-                                {searchResult.map((item, index)=>{
-                                        while(index<26){
-                                            return  <NASASEARCHitem
-                                                        title={item.data[0].title}
-                                                        src={item.links[0].href}
-                                                        load={load}
-                                                        type={item.data[0].media_type}
-                                                        key={index}
-                                                    /> 
-                                        }
-                                        return index
-                                })}     
-                        </div>
-                        <div className='media-columns'>
-                                {searchResult.map((item, index)=>{
-                                        
-                                        while(index>26&&index<51){
-                                            return  <NASASEARCHitem
-                                                        title={item.data[0].title}
-                                                        src={item.links[0].href}
-                                                        type={item.data[0].media_type}
-                                                        key={index}
-                                                    /> 
-                                        }
-                                        return null
-                                })} 
-                        </div>
-                        <div className='media-columns'>
-                                {searchResult.map((item, index)=>{
-                                        
-                                        while(index>50&&index<76){
-                                            return  <NASASEARCHitem
-                                                        title={item.data[0].title}
-                                                        src={item.links[0].href}
-                                                        type={item.data[0].media_type}
-                                                        key={index}
-                                                    /> 
-                                        }
-                                        return null
-                                })} 
-                        </div>
-                        <div className='media-columns'>
-                                {searchResult.map((item, index)=>{
-                                        
-                                        while(index>75&&index<101){
-                                            return  <NASASEARCHitem
-                                                        title={item.data[0].title}
-                                                        src={item.links[0].href}
-                                                        type={item.data[0].media_type}
-                                                        key={index}
-                                                    /> 
-                                        }
-                                        return null
-                                })} 
-                        </div>
-            </div>
+            <MainTitle text='NASA SEARCH'/>
+                <ContainerSearch
+                    placeholder={PLACEHOLDER_FOR_SEARCH}
+                    inputOnChange={(e)=>setSearchRequest(e.target.value)}
+                    btnOnClick={()=>getData(searchRequest)}
+                    onChangeImage={imageCheckbox}
+                    onChangeVideo={videoCheckbox}
+                    onChangeAudio={audioCheckbox}
+                    mediaType_imageChecked={mediaType_image}
+                    mediaType_videoChecked={mediaType_video}
+                    mediaType_audioChecked={mediaType_audio}
+                />
+            <NASASEARCHMEDIAContainer
+                searchResult={searchResult}
+            />
         </div>
     )
 }
