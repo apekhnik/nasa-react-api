@@ -23,6 +23,7 @@
 }
 .media-columns {
     width: 24%;
+    overflow: hidden;
 }
 .media-search__container__item {
     width: 100%;
