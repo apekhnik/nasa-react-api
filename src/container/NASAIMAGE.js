@@ -61,10 +61,6 @@ const NASAIMAGE =()=>{
     const audioCheckbox = ({ target: { checked } }) => {
         setMediaType_audio(checked);
     };
-
-
-
-    
     if(load){
        return <div className='search-loader-container'>
            <NASASEARCHLoader/>

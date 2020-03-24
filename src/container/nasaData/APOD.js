@@ -60,10 +60,7 @@ const APOD = ({date, size, onClick}) => {
     const sizeRender = size === 'min'? 'apod-min':'apod-full'
     const show = showExplanation ? 'show-info': 'hide-info'
     const classname = classnames( sizeRender)
-    // if(load){
-    //     // return <Loader/>
-    //     return <NASASEARCHLoader/>
-    // }
+
     if(videoPlug){
         return (
             <div className={classname} onClick={onClick}>
