@@ -8,7 +8,7 @@ import APOD from '../nasaData/APOD'
                         return <APOD
                         date={item.toString()}
                         size='min'
-                        onClick={onClick}
+                        onClick={()=>onClick((item.toString()))}
                         />})}
         </ContainerItem>
     )

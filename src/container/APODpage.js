@@ -128,16 +128,15 @@ const APODpage =()=>{
       return (
         <div className="App">
          <Container>
-            <ContainerItem>
-            {stateRange.prev.map((item)=>{
-                return <APOD
-                    date={item.toString()}
-                    size='min'
-                    onClick={()=>{onDayChange(item.toString())}}
-                  />
-            })}
-       
-            </ContainerItem>
+                  <ContainerItem>
+                      {stateRange.prev.map((item)=>{
+                          return <APOD
+                              date={item.toString()}
+                              size='min'
+                              onClick={()=>{onDayChange(item.toString())}}
+                            />
+                      })}
+                  </ContainerItem>
             <ContainerItem>
                   <ControlForm
                     inputType='date'
@@ -162,7 +161,7 @@ const APODpage =()=>{
                         />})
             }
             </ContainerItem>
-            {/* <APODColumn items={stateRange} onClick={()=>{onDayChange((item.toString()))}}/> */}
+            {/* <APODColumn items={stateRange} onClick={()=>{onDayChange}}/> */}
          </Container>
         </div>
       );
