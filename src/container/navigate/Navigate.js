@@ -13,11 +13,14 @@ const Navigate = () => {
         HOME
       </NavLink>
 
-      <NavLink to="/APOD" className="navigate-item">
+      <NavLink to={process.env.PUBLIC_URL + "/APOD"} className="navigate-item">
         Astronimic Picture of Day
       </NavLink>
 
-      <NavLink to="/media-search" className="navigate-item">
+      <NavLink
+        to={process.env.PUBLIC_URL + "/media-search"}
+        className="navigate-item"
+      >
         NASA media search
       </NavLink>
 
